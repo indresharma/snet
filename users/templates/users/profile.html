@@ -1,0 +1,20 @@
+{% extends 'post/base.html' %}
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{user.profile.image.url}}" class="rounded-circle align-center" width="150" height="150">
+
+            <h5 class="text-justify">{{user.profile.user}}</h5>
+            <h5>Personal Details</h5>
+            <strong>About Me:</strong>
+            <p class="text-justify">{{ user.profile.about_me}}</p>
+            <strong>Email: </strong>
+            <p>{{ user.profile.email }}</p>
+            <a href="{% url 'users:update_profile' user.profile.id %}" class="btn btn-outline-info">Update</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

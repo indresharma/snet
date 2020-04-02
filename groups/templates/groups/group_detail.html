@@ -1,0 +1,26 @@
+{% extends 'post/base.html' %}
+{% block body %}
+<div class="container">
+
+    <h1>{{ obj.name | capfirst}}</h1>
+    <p>{{ obj.description | capfirst }}</p>
+    <p>Members <span class="badge badge-info">{{obj.members.count}}</span></p>
+
+    <a href="{% url 'groups:update_group' obj.id %}" class="btn btn-outline-warning">Update</a>
+    {% if request.user in obj.members.all %}
+    <a href="{% url 'groups:group_posts' obj.id %}" class="btn btn-outline-warning">New Post</a>
+    <a href="{% url 'groups:leave_group' obj.id %}" class="btn btn-outline-danger">Leave Group</a>
+    {% else %}
+    <a href="{% url 'groups:join_group' obj.id %}" class="btn btn-outline-info">Join Group</a>
+    {% endif %}
+
+
+    {% for post in group_posts %}
+    {% include 'post/_post.html' %}
+    {% endfor %}
+
+
+
+</div>
+
+{% endblock %}

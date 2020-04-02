@@ -1,0 +1,24 @@
+{% extends 'post/base.html' %}
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <a href="{% url 'groups:create_group' %}" class="btn btn-outline-info mt-3 float-right">New Group</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      {% for group in object_list %}
+      <div class="card mt-3">
+        <div class="card-body">
+          <h5><a href="{% url 'groups:main_group' group.id %}" class="card-title">{{group.name}}</a></h5>
+          <p class="card-text">{{group.description}}</p>
+          <small class="text-muted">Members: {{group.members.count}}</small>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

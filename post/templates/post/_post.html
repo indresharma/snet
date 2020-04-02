@@ -1,0 +1,11 @@
+<div class="card mt-3">
+    <div class="card-body">
+        <h2>{{post.created_by.username | capfirst}} Posted:</a></h2>
+        <h5><a href="{% url 'post:detail' post.id %}" class="card-title">{{post.title}}</a></h5>
+        <p class="card-text">{{post.description}}</p>
+        <small class="text-muted">{{post.date_created | date:"D d M Y" }}</small>
+        <a href="{% url 'post:like' post.id %}" type="submit" class="btn btn-outline-danger"><i class="fas fa-heart"
+                style="color: red;"></i> {{post.likes.count}}
+        </a>
+    </div>
+</div>

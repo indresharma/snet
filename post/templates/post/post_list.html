@@ -1,0 +1,9 @@
+{% extends 'post/base.html' %}
+{% block body %}
+<div class="container">
+  {% for post in object_list %}
+    {% include 'post/_post.html' %}
+  {% endfor %}
+</div>
+
+{% endblock %}
